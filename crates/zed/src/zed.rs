@@ -952,12 +952,14 @@ fn register_actions(
 }
 
 fn initialize_pane(
-    workspace: &Workspace,
+    workspace: &mut Workspace,
     pane: &Entity<Pane>,
     window: &mut Window,
     cx: &mut Context<Workspace>,
 ) {
-    pane.update(cx, |pane, cx| {
+    let workspace: &mut Workspace  = workspace;//.toggle_panel_focus::<TerminalPanel>(window, cx);
+    let _ = workspace.toggle_panel_focus::<TerminalPanel>(window, cx);
+	pane.update(cx, |pane, cx| {
         pane.toolbar().update(cx, |toolbar, cx| {
             let multibuffer_hint = cx.new(|_| MultibufferHint::new());
             toolbar.add_item(multibuffer_hint, window, cx);

@@ -589,7 +589,7 @@ pub fn main() {
             app_state.node_runtime.clone(),
             cx,
         );
-        recent_projects::init(cx);
+        //recent_projects::init(cx);
 
         load_embedded_fonts(cx);
 
