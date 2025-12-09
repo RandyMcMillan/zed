@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install X11 development headers
+      run: sudo apt-get update && sudo apt-get install -y libx11-dev
     - uses: actions/checkout@v4
     - name: Check
       run: cargo check --verbose -j$(nproc)
